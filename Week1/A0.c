@@ -8,10 +8,11 @@ char* CheckParity(int number);
 int main()
 {
     srand(time(NULL));
+    int hazard;
 
     for(int i = 0; i < 10; i++)
     {
-        int hazard = rand() % 100;
+        hazard = rand() % 100;
 
         printf("The random number %d is %s.\n",
             hazard,

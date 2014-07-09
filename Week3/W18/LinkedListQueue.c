@@ -8,7 +8,7 @@ void listQueueInit(struct listQueue* q)
     // lnk is the sentinel
     struct link * sntl = (struct link *) malloc(sizeof(struct link));
     assert(sntl != 0);
-    sntl->next = 0;
+    sntl->next = NULL;
 
     // set the container ends
     q->firstLink = sntl; //It should always be the case that firstLink == sntl
@@ -29,6 +29,7 @@ void listQueueAddBack(struct listQueue* q, TYPE e)
     struct link * newLink = (struct link *) malloc(sizeof(struct link));
     struct link * lastLink = q->lastLink;
     assert(newLink != 0);
+    assert(lastLink != 0);
 
     lastLink->next = newLink;
     q->lastLink = newLink;

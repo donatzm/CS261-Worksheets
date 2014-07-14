@@ -42,6 +42,7 @@ int isNumber(char *s, double *num)
 */
 void add (struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 2);
 	TYPE num2 = topDynArr(stack);
     popDynArr(stack);
     TYPE num1 = topDynArr(stack);
@@ -57,6 +58,7 @@ void add (struct DynArr *stack)
 */
 void subtract(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 2);
 	TYPE num2 = topDynArr(stack);
     popDynArr(stack);
     TYPE num1 = topDynArr(stack);
@@ -72,6 +74,7 @@ void subtract(struct DynArr *stack)
 */
 void divide(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 2);
 	TYPE num2 = topDynArr(stack);
     popDynArr(stack);
     TYPE num1 = topDynArr(stack);
@@ -87,6 +90,7 @@ void divide(struct DynArr *stack)
 */
 void multiply(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 2);
     TYPE num2 = topDynArr(stack);
     popDynArr(stack);
     TYPE num1 = topDynArr(stack);
@@ -102,6 +106,7 @@ void multiply(struct DynArr *stack)
 */
 void power(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 2);
     TYPE num2 = topDynArr(stack);
     popDynArr(stack);
     TYPE num1 = topDynArr(stack);
@@ -117,6 +122,7 @@ void power(struct DynArr *stack)
 */
 void squared(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -130,6 +136,7 @@ void squared(struct DynArr *stack)
 */
 void cubed(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -143,6 +150,7 @@ void cubed(struct DynArr *stack)
 */
 void absval(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -156,6 +164,7 @@ void absval(struct DynArr *stack)
 */
 void squarert(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -169,6 +178,7 @@ void squarert(struct DynArr *stack)
 */
 void etox(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -182,6 +192,7 @@ void etox(struct DynArr *stack)
 */
 void natlog(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -195,6 +206,7 @@ void natlog(struct DynArr *stack)
 */
 void logb10(struct DynArr *stack)
 {
+    assert(sizeDynArr(stack) >= 1);
     TYPE num1 = topDynArr(stack);
     popDynArr(stack);
 
@@ -281,7 +293,7 @@ double calculate(int numInputTokens, char **inputString)
 	 */
     if(sizeDynArr(stack) != 1)
     {
-        printf("The arguments did not match the functions!\n");
+        printf("You have some leftover parameters!\n");
     }
 
     result = topDynArr(stack);

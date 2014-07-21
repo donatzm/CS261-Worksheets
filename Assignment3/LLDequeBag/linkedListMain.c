@@ -6,9 +6,8 @@
 /* 	VISUAL STUDIO (VS) USERS: COMMENT OUT THE LINE BELOW 
 	TO EXCLUDE THE MEMORY TEST CODE.
 */
-#define MEMORY_TEST_INCLUDED
 
-#ifdef MEMORY_TEST_INCLUDED
+
 /* This header is needed for memory usage calculation. */
 #include <sys/resource.h> 
 
@@ -20,7 +19,7 @@ long getMemoryUsage() {
 	ret = getrusage(who, &usage);	
 	return usage.ru_maxrss; 
 }
-#endif
+
 
 /*Function to get number of milliseconds elapsed since program started execution*/
 double getMilliseconds() {
@@ -32,12 +31,11 @@ int main(int argc, char* argv[]){
 	int n, i;
 	double t1, t2;
 	
-	#ifdef MEMORY_TEST_INCLUDED
 	/* variables to hold memory used before and after creating LinkedList */	
 	long m1, m2;
 	/* memory used BEFORE creating LinkedList */
 	m1 = getMemoryUsage();
-	#endif
+
   
 	if( argc != 2 ) return 0;
   
@@ -47,11 +45,10 @@ int main(int argc, char* argv[]){
 		addList(b, (TYPE)i);/*Add elements*/
 	}	
   
-	#ifdef MEMORY_TEST_INCLUDED
 	/* memory used AFTER creating LinkedList */
 	m2 = getMemoryUsage();
 	printf("Memory used by LinkedList: %ld KB \n", m2-m1);
-	#endif
+
   
 	t1 = getMilliseconds();/*Time before contains()*/
 	
@@ -63,7 +60,7 @@ int main(int argc, char* argv[]){
 	printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
 	
 	/* delete the linked list */
-	//deleteLinkedList(b);
+	deleteLinkedList(b);
 	
 	return 0;
 }
